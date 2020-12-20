@@ -8,7 +8,6 @@ const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.oor8w.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-console.log(uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express()
@@ -108,4 +107,4 @@ app.get('/', (req, res) => {
   res.send('Hello World000000!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
